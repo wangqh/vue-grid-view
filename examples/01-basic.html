@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vue Grid View Example 1 - Basic Responsive</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    
+
+    <div id="app" style="width: 100%;">
+            <h1>Vue Grid View Example 1 - Basic</h1>
+        <div id="content">
+            <grid-view
+                    :view="layout"
+                    :col-num="12"
+                    :row-num="12"
+                    :use-css-transforms="true"
+            >
+                <grid-item v-for="item in layout" :key="item.i"
+                           :x="item.x"
+                           :y="item.y"
+                           :w="item.w"
+                           :h="item.h"
+                           :min-w="2"
+                           :min-h="2"
+                           :i="item.i"
+                >
+                    <!--<custom-drag-element :text="item.i"></custom-drag-element>-->
+                    <test-element :text="item.i"></test-element>
+                    <!--<button @click="clicked">CLICK ME!</button>-->
+                </grid-item>
+            </grid-view>
+        </div>
+
+    </div>
+    <script src="vue.min.js"></script>
+    <script src="../dist/vue-grid-view.min.js"></script>
+    <script src="01-basic.js"></script>
+</body>
+</html>
