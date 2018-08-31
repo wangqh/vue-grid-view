@@ -1,2 +1,2 @@
 # vue-grid-view
-A render grid view, for Vue.js.
+A grid view render, for Vue.js.
