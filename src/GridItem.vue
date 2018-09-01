@@ -26,26 +26,6 @@
     export default {
         name: "GridItem",
         props: {
-            minH: {
-                type: Number,
-                required: false,
-                default: 1
-            },
-            minW: {
-                type: Number,
-                required: false,
-                default: 1
-            },
-            maxH: {
-                type: Number,
-                required: false,
-                default: Infinity
-            },
-            maxW: {
-                type: Number,
-                required: false,
-                default: Infinity
-            },
             x: {
                 type: Number,
                 required: true
