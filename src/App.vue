@@ -3,23 +3,20 @@
         <h1>Vue Grid View</h1>
         <div id="content">
             <grid-view
-                    :view="layout"
+                    :view="viewList"
                     :col-num="parseInt(colNum)"
                     :row-num="parseInt(rowNum)"
                     :use-css-transforms="false"
+                    :margin="[10, 10]"
             >
-                <grid-item v-for="item in layout" :key="item.i"
+                <grid-item v-for="item in viewList" :key="item.i"
                            :x="item.x"
                            :y="item.y"
                            :w="item.w"
                            :h="item.h"
-                           :min-w="2"
-                           :min-h="2"
                            :i="item.i"
                 >
-                    <!--<custom-drag-element :text="item.i"></custom-drag-element>-->
                     <test-element :text="item.i"></test-element>
-                    <!--<button @click="clicked">CLICK ME!</button>-->
                 </grid-item>
             </grid-view>
         </div>
@@ -31,7 +28,7 @@
     import GridView from './GridView.vue';
     import TestElement from './TestElement.vue';
 
-    var testLayout = [
+    var testView = [
         {"x":0,"y":0,"w":2,"h":2,"i":"0"},
         {"x":2,"y":0,"w":2,"h":4,"i":"1"},
         {"x":4,"y":0,"w":2,"h":6,"i":"2"},
@@ -49,7 +46,7 @@
         },
         data () {
             return {
-                layout: JSON.parse(JSON.stringify(testLayout)),
+                viewList: JSON.parse(JSON.stringify(testView)),
                 rowNum: 12,
                 colNum: 12
             }
