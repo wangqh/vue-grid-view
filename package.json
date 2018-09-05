@@ -1,6 +1,6 @@
 {
   "name": "vue-grid-view",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A grid view render, as a Vue component.",
   "main": "dist/vue-grid-view.min.js",
   "scripts": {
