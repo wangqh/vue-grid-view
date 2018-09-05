@@ -67,7 +67,7 @@ or include the script in your html (download from [releases](https://github.com/
         :y="item.y"
         :w="item.w"
         :h="item.h"
-        :i="item.i" >
+        >
           {{item.i}}
       </grid-item>
     </grid-view>
@@ -129,13 +129,6 @@ or include the script in your html (download from [releases](https://github.com/
 
     
 ##### GridItem
-
-* **i**
-    
-    * type: `String`
-    * required: `true`
-
-    This is the unique identifier of the item.
 
 * **x**
     

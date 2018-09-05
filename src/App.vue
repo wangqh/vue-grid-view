@@ -14,7 +14,6 @@
                            :y="item.y"
                            :w="item.w"
                            :h="item.h"
-                           :i="item.i"
                 >
                     <test-element :text="item.i"></test-element>
                 </grid-item>
@@ -50,12 +49,7 @@
                 rowNum: 12,
                 colNum: 12
             }
-        },
-        mounted: function () {
-        },
-        methods: {
-         
-        },
+        }
     }
 </script>
 
