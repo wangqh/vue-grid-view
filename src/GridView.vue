@@ -119,7 +119,6 @@
             },
             onWindowResize: function () {
                 if (this.$refs !== null && this.$refs.item !== null && this.$refs.item !== undefined) {
-                    // debugger
                     this.width = this.$refs.item.offsetWidth;
                     this.height = this.$refs.item.offsetHeight;
                 }

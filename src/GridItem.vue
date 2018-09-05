@@ -41,9 +41,6 @@
             h: {
                 type: Number,
                 required: true
-            },
-            i: {
-                required: true
             }
         },
         inject: ["eventBus"],
