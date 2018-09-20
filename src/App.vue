@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        <h1>Vue Grid View</h1>
+        <h1>Vue Grid View
+            <button @click="toggleFullScreen">Toggle Fullscreen</button>
+        </h1>
         <div id="content">
             <grid-view
                     :view="viewList"
@@ -49,35 +51,36 @@
                 rowNum: 12,
                 colNum: 12
             }
+        },
+        methods: {
+            toggleFullScreen () {
+                if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                    if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen()
+                    } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen()
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen()
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT)
+                    }
+                    return true
+                } else {
+                    if (document.exitFullscreen) {
+                    document.exitFullscreen()
+                    } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen()
+                    } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen()
+                    } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen()
+                    }
+                    return false
+                }
+            }
         }
     }
 </script>
 
 <style>
-/*    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-
-    h1, h2 {
-        font-weight: normal;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    }*/
 </style>
