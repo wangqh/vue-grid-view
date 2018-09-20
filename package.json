@@ -1,6 +1,6 @@
 {
   "name": "vue-grid-view",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A grid view render, as a Vue component.",
   "main": "dist/vue-grid-view.min.js",
   "scripts": {
@@ -23,9 +23,7 @@
     "url": "https://github.com/wangqh/vue-grid-view/issues"
   },
   "homepage": "https://github.com/wangqh/vue-grid-view#readme",
-  "dependencies": {
-    "element-resize-detector": "^1.1.10"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

@@ -44,12 +44,3 @@ export function validateView(view, contextName) {
     }
   }
 }
-
-
-
-
-
-
-
-
-
