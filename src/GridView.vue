@@ -12,6 +12,7 @@
 </style>
 <script>
     import Vue from 'vue';
+    var elementResizeDetectorMaker = require("element-resize-detector");
 
     import { validateView } from './utils';
     import GridItem from './GridItem.vue'
@@ -65,17 +66,19 @@
         },
         beforeDestroy: function(){
             //Remove listeners
-            window.removeEventListener("resize", this.onWindowResize)
+            if (this.erd) {
+                this.erd.removeListener(this.$refs.item, this.handleElementResize)
+            }
         },
         mounted: function() {
             const self = this
             this.$nextTick(function () {
                 validateView(self.view);
                 self.$nextTick(function() {
-                    if (self.width === null || self.height === null) {
-                        self.onWindowResize();
-                        window.addEventListener('resize', self.onWindowResize);
-                    }
+                    const erd = this.erd = elementResizeDetectorMaker({
+                        strategy: "scroll" //<- For ultra performance.
+                    });
+                    erd.listenTo(self.$refs.item, self.handleElementResize);
                 });
             });
         },
@@ -107,10 +110,10 @@
                     this.eventBus.$emit("updateHeight", this.height);
                 }
             },
-            onWindowResize: function () {
-                if (this.$refs !== null && this.$refs.item !== null && this.$refs.item !== undefined) {
-                    this.width = this.$refs.item.clientWidth;
-                    this.height = this.$refs.item.clientHeight;
+            handleElementResize (element) {
+                if (element) {
+                    this.width = element.clientWidth
+                    this.height = element.clientHeight
                 }
             }
         },
