@@ -12,7 +12,6 @@
 </style>
 <script>
     import Vue from 'vue';
-    var elementResizeDetectorMaker = require("element-resize-detector");
 
     import { validateView } from './utils';
     import GridItem from './GridItem.vue'
@@ -64,21 +63,27 @@
             self.eventBus = self._provided.eventBus;
 
         },
-        beforeDestroy: function(){
-            //Remove listeners
-            if (this.erd) {
-                this.erd.removeListener(this.$refs.item, this.handleElementResize)
+        beforeDestroy: function () {
+            // Remove listeners
+            window.removeEventListener('resize', this.handleWindowResize)
+        },
+        activated () {
+            if (this.deactivated) {
+                this.handleWindowResize()
+                window.addEventListener('resize', this.handleWindowResize)
             }
+        },
+        deactivated () {
+            window.removeEventListener('resize', this.handleWindowResize)
+            this.deactivated = true
         },
         mounted: function() {
             const self = this
             this.$nextTick(function () {
                 validateView(self.view);
                 self.$nextTick(function() {
-                    const erd = this.erd = elementResizeDetectorMaker({
-                        strategy: "scroll" //<- For ultra performance.
-                    });
-                    erd.listenTo(self.$refs.item, self.handleElementResize);
+                    self.handleWindowResize()
+                    window.addEventListener('resize', self.handleWindowResize)
                 });
             });
         },
@@ -110,7 +115,8 @@
                     this.eventBus.$emit("updateHeight", this.height);
                 }
             },
-            handleElementResize (element) {
+            handleWindowResize () {
+                const element = this.$refs.item
                 if (element) {
                     this.width = element.clientWidth
                     this.height = element.clientHeight
